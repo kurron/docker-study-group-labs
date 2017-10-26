@@ -51,6 +51,11 @@ Useful if you missed a class or forgot a step.
   1. `ps -aux`
   1. `uname -a`
   1. `top`
+  1. `ls /bin`
+  1. `ls /bin`
+  1. `cat /proc/cpuinfo`
+  1. `cat /proc/meminfo`
+  1. `cat /proc/net/dev`
 1. in your Docker container, `exit`
 1. `docker ps`
 1. `docker ps -a`
