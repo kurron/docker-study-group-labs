@@ -13,10 +13,6 @@ Useful if you missed a class or forgot a step.
 ## Ubuntu Linux (manual)
 1. Spin up a small EC2 instance using the Ubuntu Linux AMI
 1. `uname -a` to verify we are running a Linux 3.1.0 or higher kernel
-1. `sudo apt-get update`
-1. `sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual`
-1. `sudo update-grub`
-1. `sudo reboot`
 1. `sudo apt-get install apt-transport-https ca-certificates curl software-properties-common`
 1. `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
 1. `sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
@@ -29,13 +25,16 @@ Useful if you missed a class or forgot a step.
 1. Spin up a small EC2 instance using the Ubuntu Linux AMI
 1. `uname -a` to verify we are running a Linux 3.1.0 or higher kernel
 1. `sudo apt-get update`
-1. `sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual`
-1. `sudo update-grub`
-1. `sudo reboot`
 1. `whereis curl`
 1. `sudo apt-get install curl`
 1. `curl https://get.docker.com/ | sudo sh`
-1. stop the instance (we'll be using it in future labs)
+1. `sudo docker info`
+1. `docker info`
+1. `sudo usermod -aG docker ubuntu`
+1. `docker info`
+1. log out and back in again
+1. `docker info`
+1. save the instance (we'll be using it in future labs)
 
 # Lab 2: Kicking The Tires
 1. Spin up a Ubuntu EC2 instance with Docker installed
