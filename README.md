@@ -45,14 +45,16 @@ Useful if you missed a class or forgot a step.
 1. `sudo service docker stop`
 1. `sudo service docker start`
 1. `docker run --help`
-1. `docker run --hostname inside-docker --interactive --tty ubuntu /bin/bash`
+1. `docker run --interactive --tty ubuntu /bin/bash`
 1. start a second ssh session to your EC2 instance
 1. compare results of commands from inside Docker and on the EC2 instance
+  1. `whoami`
+  1. `hostname`
   1. `ps -aux`
   1. `uname -a`
   1. `top`
   1. `ls /bin`
-  1. `ls /bin`
+  1. `find / -type d`
   1. `cat /proc/cpuinfo`
   1. `cat /proc/meminfo`
   1. `cat /proc/net/dev`
@@ -66,11 +68,12 @@ Useful if you missed a class or forgot a step.
 1. create an account (we'll use it in later labs)
 1. click the `Explore` link
 1. browse through the images marked as *official*
-1. `docker run --hostname inside-docker --interactive --tty alpine /bin/bash`
-1. `docker run --hostname inside-docker --interactive --tty centos /bin/bash`
-1. `docker run --hostname inside-docker --interactive --tty amazonlinux /bin/bash`
-1. `docker run --hostname inside-docker --interactive --tty bash /bin/bash`
-1. `docker run --hostname inside-docker --interactive --tty clearlinux /bin/bash`
+1. poke around the following images looking for differences between them
+1. `docker run --interactive --tty alpine /bin/bash`
+1. `docker run --interactive --tty centos /bin/bash`
+1. `docker run --interactive --tty amazonlinux /bin/bash`
+1. `docker run --interactive --tty bash /bin/bash`
+1. `docker run --interactive --tty clearlinux /bin/bash`
 
 
 # Tips and Tricks
