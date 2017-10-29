@@ -109,7 +109,6 @@ Useful if you missed a class or forgot a step.
 1. `docker rm --volumes --force $(docker ps --all --quiet)` -- shell magic to nuke all containers
 
 # Lab 4: Docker Repository
-1. `docker images`
 1. visit `https://hub.docker.com/`
 1. create an account (we'll use it in later labs)
 1. click the `Explore` link
@@ -121,9 +120,29 @@ Useful if you missed a class or forgot a step.
 1. `docker run --interactive --tty bash /bin/bash`
 1. `docker run --interactive --tty clearlinux /bin/bash`
 
+# Lab 5: Docker Images
+1. `docker images`
+1. `docker run --interactive --tty ubuntu:16.04`
+1. `docker run --interactive --tty ubuntu:14.04`
+1. `docker run --interactive --tty ubuntu:latest`
+1. `docker pull ubuntu:12.04`
+1. `docker images`
+1. `docker search python`
+1. `docker search kurron`
+1. `docker run --interactive --tty kurron/docker-azul-jdk-8-build /bin/bash`
+1. `java -version`
+1. `ansible --version`
+1. `docker --version`
+1. `exit`
+1. `docker images`
+1. `docker rmi --force $(docker images --quiet)`
+1. `docker images`
 
 # Lab N: Docker Log Drivers (3.9)
-# Lab N: /var/lib/docker/containers (3.15)
+# Lab N: Guts
+1. /var/lib/docker/containers (3.15)
+1. /var/lib/docker (4.2)
+1.
 
 # Tips and Tricks
 
