@@ -8,6 +8,15 @@ Useful if you missed a class or forgot a step.
 * An SSH client, [OpenSSH](https://www.openssh.com/) preferred
 * Basic Linux knowledge preferred
 
+# Tmux Cheat Sheet
+* `ctrl-b C` -- create new window
+* `ctrl-b n` -- jump to next window
+* `ctrl-b p` -- jump to previous window
+* `ctrl-b 0` -- jump to 0th window
+* `ctrl-b ""` -- split window horizontally (pane)
+* `ctrl-b O` -- jump to next pane
+* `ctrl-b x` -- close pane
+
 # Lab 1: Installation
 
 ## Ubuntu Linux (manual)
@@ -44,26 +53,63 @@ Useful if you missed a class or forgot a step.
 1. `docker info`
 1. `sudo service docker stop`
 1. `sudo service docker start`
+1. `docker help`
+1. `man docker`
+1. `docker help run`
 1. `docker run --help`
 1. `docker run --interactive --tty ubuntu /bin/bash`
-1. start a second ssh session to your EC2 instance
+1. start a second ssh session to your EC2 instance (`tmux` can simplify this)
 1. compare results of commands from inside Docker and on the EC2 instance
   1. `whoami`
   1. `hostname`
+  1. `cat /etc/hosts`
+  1. `hostname --all-ip-addresses`
   1. `ps -aux`
   1. `uname -a`
   1. `top`
   1. `ls /bin`
-  1. `find / -type d`
+  1. `sudo find / -type d | wc --lines` -- **no `sudo`** needed on the Docker side
   1. `cat /proc/cpuinfo`
   1. `cat /proc/meminfo`
   1. `cat /proc/net/dev`
+1. in your Docker container, `apt-get update; apt-get install vim`
 1. in your Docker container, `exit`
-1. `docker ps`
-1. `docker ps -a`
-1. `docker images`
 
-# Lab 3: Docker Repository
+# Lab 3: Manipulating Containers
+1. `docker ps` -- show running containers
+1. `docker ps -a` -- show all containers
+1. `docker ps -l` -- show the last running container
+1. `docker run --name wolverine --interactive --tty ubuntu /bin/bash`
+1. `exit` the container
+1. `docker ps -l` -- notice the container name
+1. `docker start wolverine` -- start stopped container
+1. `docker ps` -- should see the wolverine container running
+1. `docker attach <container id>` -- see how few characters you can get away with
+1. `exit` to stop the container
+1. `docker run --detach --name nightcrawler ubuntu /bin/sh -c "while true; do echo hello world; sleep 2; done"`
+1. `docker logs --follow --timestamps nightcrawler`
+1. `docker top nightcrawler`
+1. `docker stats nightcrawler`
+1. `docker exec --detach nightcrawler touch /etc/new_config_file`
+1. `docker exec --interactive --tty nightcrawler /bin/bash`
+1. `ls -alh /etc/new_config_file` -- should see the file added previously
+1. `exit`
+1. `docker stop nightcrawler`
+1. `docker ps -a` -- container still exists but is not running
+1. `docker run --restart=always --detach --name banshee ubuntu /bin/sh -c "sleep 2; exit 1964"`
+1. `watch docker ps` -- notice how the container keeps restarting after the "failure"
+1. `docker stop banshee`
+1. `docker run --restart=on-failure:5 --detach --name colossus ubuntu /bin/sh -c "sleep 5; exit 1964"`
+1. `watch docker ps` -- notice how Docker gives up restarting after 5 tries
+1. `docker inspect colossus`
+1. `docker inspect --format='{{ .State.Running }}' colossus`
+1. `docker stop colossus`
+1. `docker rm colossus`
+1. clean up the remaining containers on your own. Try using id and names.
+1. `docker rm --volumes --force $(docker ps --all --quiet)` -- shell magic to nuke all containers
+
+# Lab 4: Docker Repository
+1. `docker images`
 1. visit `https://hub.docker.com/`
 1. create an account (we'll use it in later labs)
 1. click the `Explore` link
@@ -75,6 +121,9 @@ Useful if you missed a class or forgot a step.
 1. `docker run --interactive --tty bash /bin/bash`
 1. `docker run --interactive --tty clearlinux /bin/bash`
 
+
+# Lab N: Docker Log Drivers (3.9)
+# Lab N: /var/lib/docker/containers (3.15)
 
 # Tips and Tricks
 
