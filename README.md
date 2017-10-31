@@ -76,7 +76,7 @@ Useful if you missed a class or forgot a step.
 1. in your Docker container, `exit`
 
 # Lab 3: Manipulating Containers
-1. `docker ps` -- show running containers
+. `docker ps` -- show running containers
 1. `docker ps -a` -- show all containers
 1. `docker ps -l` -- show the last running container
 1. `docker run --name wolverine --interactive --tty ubuntu /bin/bash`
@@ -86,6 +86,8 @@ Useful if you missed a class or forgot a step.
 1. `docker ps` -- should see the wolverine container running
 1. `docker attach <container id>` -- see how few characters you can get away with
 1. `exit` to stop the container
+
+# Lab 4: Manipulating Containers (continued)
 1. `docker run --detach --name nightcrawler ubuntu /bin/sh -c "while true; do echo hello world; sleep 2; done"`
 1. `docker logs --follow --timestamps nightcrawler`
 1. `docker top nightcrawler`
@@ -108,7 +110,7 @@ Useful if you missed a class or forgot a step.
 1. clean up the remaining containers on your own. Try using id and names.
 1. `docker rm --volumes --force $(docker ps --all --quiet)` -- shell magic to nuke all containers
 
-# Lab 4: Docker Repository
+# Lab 5: Docker Repository
 1. visit `https://hub.docker.com/`
 1. create an account (we'll use it in later labs)
 1. click the `Explore` link
@@ -120,7 +122,7 @@ Useful if you missed a class or forgot a step.
 1. `docker run --interactive --tty bash /bin/bash`
 1. `docker run --interactive --tty clearlinux /bin/bash`
 
-# Lab 5: Docker Images
+# Lab 6: Docker Images
 1. `docker images`
 1. `docker run --interactive --tty ubuntu:16.04`
 1. `docker run --interactive --tty ubuntu:14.04`
