@@ -47,8 +47,8 @@ Useful if you missed a class or forgot a step.
 
 # Lab 2: Kicking The Tires
 1. Spin up a Ubuntu EC2 instance with Docker installed
-1. `sudo status docker`
-1. `status docker`
+1. ~~`sudo status docker`~~
+1. ~~`status docker`~~
 1. `cat /etc/group`
 1. `docker info`
 1. `sudo service docker stop`
