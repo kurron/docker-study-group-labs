@@ -77,11 +77,11 @@ Useful if you missed a class or forgot a step.
 
 # Lab 3: Manipulating Containers
 . `docker ps` -- show running containers
-1. `docker ps -a` -- show all containers
-1. `docker ps -l` -- show the last running container
+1. `docker ps --all` -- show all containers
+1. `docker ps --latest` -- show the last running container
 1. `docker run --name wolverine --interactive --tty ubuntu /bin/bash`
 1. `exit` the container
-1. `docker ps -l` -- notice the container name
+1. `docker ps --latest` -- notice the container name
 1. `docker start wolverine` -- start stopped container
 1. `docker ps` -- should see the wolverine container running
 1. `docker attach <container id>` -- see how few characters you can get away with
@@ -145,7 +145,7 @@ Useful if you missed a class or forgot a step.
 1. `apt-get update`
 1. `apt-get install apache2`
 1. `exit`
-1. `LAST=$(docker ps -l -q)`
+1. `LAST=$(docker ps --latest --quiet)`
 1. `echo ${LAST}`
 1. `docker commit ${LAST} kurron/apache2` <--- use your own repository account
 1. `docker images kurron/apache2`
@@ -153,6 +153,29 @@ Useful if you missed a class or forgot a step.
 1. `docker inspect kurron/apache2:by-hand`
 1. `docker run --interactive --tty kurron/apache2:by-hand`
 1. `service apache2 status`
+
+# Lab 8: Creating Docker Images (an easier way)
+1. `git clone https://github.com/kurron/docker-study-group-labs.git`
+1. `cd solutions/lab-07`
+1. `docker build --tag="kurron/static_web:v1.0.0" .`
+1. `docker images`
+1. `docker build --file Dockerfile.broken .`
+1. `docker build --no-cache --tag="kurron/static_web:v1.0.0" .`
+1. `docker history 85098924c514` <--- your image id will be different
+
+# Lab 9: Fun With Port Bindings
+1. `docker run --detach --publish 80 --name domino kurron/static_web:v1.0.0 nginx -g "daemon off;"`
+1. `docker ps --latest`
+1. `docker port cb888707fcba`
+1. `docker port domino 80`
+1. `docker run --detach --publish 80:80 --name domino kurron/static_web:v1.0.0 nginx -g "daemon off;"`
+1. `docker run --detach --publish 8080:80 --name domino kurron/static_web:v1.0.0 nginx -g "daemon off;"`
+1. `docker run --detach --publish 127.0.0.1:8080:80 --name domino kurron/static_web:v1.0.0 nginx -g "daemon off;"`
+1. `docker run --detach --publish 127.0.0.1::80 --name domino kurron/static_web:v1.0.0 nginx -g "daemon off;"`
+1. stop and remove all containers
+1. `docker run --detach --publish-all --name domino kurron/static_web:v1.0.0 nginx -g "daemon off;"`
+1. `docker port domino`
+1. `curl localhost:32769` <--- your port will be different
 
 # Lab N: Docker Log Drivers (3.9)
 # Lab N: Guts
