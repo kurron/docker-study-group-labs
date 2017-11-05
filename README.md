@@ -177,6 +177,17 @@ Useful if you missed a class or forgot a step.
 1. `docker port domino`
 1. `curl localhost:32769` <--- your port will be different
 
+# Lab 10: Dockerfile Madness
+1. `cd solutions/lab-10`
+1. `docker build --tag="kurron/dockerfile-example:v1.0.0" .`
+1. `docker run --interactive --tty kurron/dockerfile-example:v1.0.0`
+1. `docker run --interactive --tty kurron/dockerfile-example:v1.0.0 -alh /opt`
+1. `docker run --interactive --tty kurron/dockerfile-example:v1.0.0 -alh /opt/wordpress`
+1. `docker images`
+1. `docker inspect kurron/dockerfile-example:v1.0.0`
+
+
+# Lab N: Dockerfile Madness (advanced) (4.5.10.10)
 # Lab N: Docker Log Drivers (3.9)
 # Lab N: Guts
 1. /var/lib/docker/containers (3.15)
