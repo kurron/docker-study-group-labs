@@ -140,6 +140,20 @@ Useful if you missed a class or forgot a step.
 1. `docker rmi --force $(docker images --quiet)`
 1. `docker images`
 
+# Lab 7: Creating Docker Images (the hard way)
+1. `docker run --interactive --tty ubuntu:latest`
+1. `apt-get update`
+1. `apt-get install apache2`
+1. `exit`
+1. `LAST=$(docker ps -l -q)`
+1. `echo ${LAST}`
+1. `docker commit ${LAST} kurron/apache2` <--- use your own repository account
+1. `docker images kurron/apache2`
+1. `docker commit -m "Created by hand" -a "Ron Kurr kurron@jvmguy.com" ${LAST} kurron/apache2:by-hand`
+1. `docker inspect kurron/apache2:by-hand`
+1. `docker run --interactive --tty kurron/apache2:by-hand`
+1. `service apache2 status`
+
 # Lab N: Docker Log Drivers (3.9)
 # Lab N: Guts
 1. /var/lib/docker/containers (3.15)
