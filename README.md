@@ -216,6 +216,20 @@ This is difficult to explain in text so try and be in class for this one.
 1. In the Docker Hub console, make sure your Docker build gets triggered
 1. Pull down the latest image and run it, ensuring your changes show up
 
+# Lab 12: Simple Volume Mount
+1. `cd docker-study-group-labs`
+1. `git pull` to get the current bits
+1. `cd solutions/lab-12`
+1. `docker build --tag="kurron/mount-example:v1.0.0" .` <--- use your own account
+1. `docker history kurron/mount-example:v1.0.0`
+1. `docker run --detach --publish 80 --name mystique --volume ${PWD}/website:/var/www/html/website:ro kurron/mount-example:v1.0.0 nginx`
+1. `docker port mystique`
+1. `curl --silent localhost:32771` <--- your port will be different
+1. edit `website/index.html`
+1. `curl --silent localhost:32771`
+1. determine the public address of your EC2 instance
+1. open your web browser to `http://ec2-instance-address:32771/`
+
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
 # Lab N: Dockerfile Madness (advanced) (4.5.10.10)
