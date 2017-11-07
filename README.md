@@ -156,7 +156,7 @@ Useful if you missed a class or forgot a step.
 
 # Lab 8: Creating Docker Images (an easier way)
 1. `git clone https://github.com/kurron/docker-study-group-labs.git`
-1. `cd solutions/lab-07`
+1. `cd docker-study-group-labs/solutions/lab-07`
 1. `docker build --tag="kurron/static_web:v1.0.0" .`
 1. `docker images`
 1. `docker build --file Dockerfile.broken .`
@@ -198,6 +198,23 @@ Useful if you missed a class or forgot a step.
 1. run somebody else's image, illustrating how image sharing works
 
 # Lab 11: Automated Image Building
+This is difficult to explain in text so try and be in class for this one.
+
+1. Create a [GitHub](https://github.com/) account if you don't already have one
+1. Create a new repository using the `labs/lab-11` folder as source
+1. Log into your [Docker Hub](https://hub.docker.com) account
+1. click `Create -> Create Automated Build`
+1. `Add Repository`
+1. Add your GitHub account
+1. Select your repository
+1. `Create` to create the build project
+1. Verify that the build was successful
+1. Checkout your GitHub project
+1. Make an edit to your `local.txt`
+1. `git commit -am 'Ron made me do this'`
+1. `git push`
+1. In the Docker Hub console, make sure your Docker build gets triggered
+1. Pull down the latest image and run it, ensuring your changes show up
 
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
