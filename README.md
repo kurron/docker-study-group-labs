@@ -149,7 +149,7 @@ Useful if you missed a class or forgot a step.
 1. `echo ${LAST}`
 1. `docker commit ${LAST} kurron/apache2` <--- use your own repository account
 1. `docker images kurron/apache2`
-1. `docker commit -m "Created by hand" -a "Ron Kurr kurron@jvmguy.com" ${LAST} kurron/apache2:by-hand`
+1. `docker commit --message "Created by hand" --author "Ron Kurr kurron@jvmguy.com" ${LAST} kurron/apache2:by-hand`
 1. `docker inspect kurron/apache2:by-hand`
 1. `docker run --interactive --tty kurron/apache2:by-hand`
 1. `service apache2 status`
