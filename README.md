@@ -186,18 +186,18 @@ Useful if you missed a class or forgot a step.
 1. `docker images`
 1. `docker inspect kurron/dockerfile-example:v1.0.0`
 
-# Lab 10: Publishing Docker Images
+# Lab 11: Publishing Docker Images
 1. `cd labs/lab-11`
 1. edit the `Dockerfile` and `local.txt` files, using your personal settings
 1. `docker build --tag="kurron/publish-example:v1.0.0" .` <--- use your own account
-1. `docker run --interactive --tty publish-example:v1.0.0`
+1. `docker run --interactive --tty kurron/publish-example:v1.0.0`
 1. `docker push kurron/publish-example:v1.0.0`
 1. `docker login`
 1. `docker push kurron/publish-example:v1.0.0`
 1. visit [https://hub.docker.com/](https://hub.docker.com/) and find your image
 1. run somebody else's image, illustrating how image sharing works
 
-# Lab 11: Automated Image Building
+# Lab 12: Automated Image Building
 This is difficult to explain in text so try and be in class for this one.
 
 1. Create a [GitHub](https://github.com/) account if you don't already have one
