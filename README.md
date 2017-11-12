@@ -218,6 +218,7 @@ This is difficult to explain in text so try and be in class for this one.
 
 # Lab 12: Simple Volume Mount
 1. `cd docker-study-group-labs`
+1. `git reset --hard` <--- will nuke any local changes you may have made
 1. `git pull` to get the current bits
 1. `cd solutions/lab-12`
 1. `docker build --tag="kurron/mount-example:v1.0.0" .` <--- use your own account
@@ -229,6 +230,63 @@ This is difficult to explain in text so try and be in class for this one.
 1. `curl --silent localhost:32771`
 1. determine the public address of your EC2 instance
 1. open your web browser to `http://ec2-instance-address:32771/`
+1. **Tip:** Volumes can also be shared between containers and can persist even when containers are stopped
+1. **Tip:** If the container directory doesn't exist Docker will create it.
+
+# Lab 13: Networking (single host setup)
+1. stop any running containers
+1. `docker rm --volumes --force $(docker ps --all --quiet)`
+1. `docker rmi --force $(docker images --quiet)`
+1. `docker run --name thor --detach --publish-all redis:latest`
+1. `docker port thor`
+1. `sudo apt-get install redis-tools`
+1. `redis-cli -h 127.0.0.1 -p 32769 ping` <--- use your own port
+1. `docker run --name sif --interactive --tty --rm redis:latest redis-cli ping` <-- will fail with a connection error
+
+# Lab 14: Networking (Docker Internal Networking)
+1. Every Docker container is assigned an IP address, provided through an interface created when we installed Docker. That interface is called `docker0`.
+1. `ip a show docker0` (you may have to install the `iproute2` package)
+1. The `docker0` interface is a virtual Ethernet bridge that connects our containers and the local host network.
+1. `ip a show` -- for every container there is a `veth` interface
+1. `docker run --interactive --tty --rm ubuntu:latest bash`
+1. `apt-get update && apt-get install iproute2 traceroute`
+1. `ip a show eth0` -- we can see the EC2-side ip address of the container
+1. `traceroute google.com` -- notice how we go through the `docker0` ip address?
+1. `exit`
+1. `sudo iptables --table nat --list --numeric` -- this is just to underscore that NAT is happening
+1. `docker inspect thor` or `docker inspect -f '{{ .NetworkSettings.IPAddress }}' thor` to get the ip address
+1. `redis-cli -h 172.17.0.2 ping` <--- use your own ip, notice we no longer have to specify a port
+1. `DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:32769 to:172.17.0.2:6379` show the NATing going on
+1. `docker inspect -f '{{ .NetworkSettings.IPAddress }}' thor` -- remember this value
+1. `docker restart thor`
+1. `docker inspect -f '{{ .NetworkSettings.IPAddress }}' thor` -- address can change on you
+1. **TIP:** hard coding addresses and the fact that adresses can change make internal networking difficult to use in production
+
+# Lab 15: Networking (Docker Networking)
+1. stop any running containers
+1. `docker rm --volumes --force $(docker ps --all --quiet)`
+1. `docker rmi --force $(docker images --quiet)`
+1. `docker network create asgard`
+1. `docker network inspect asgard`
+1. **TIP:** in addition to bridge networks, which exist on a single host, we can also create overlay networks, which allow us to span multiple hosts.
+1. `docker network ls`
+1. **TIP:** `docker network rm` will remove a network
+1. `docker run --name thor --net asgard --detach --publish-all redis:latest`
+1. `docker network inspect asgard` -- notice how `thor` is now a member of the network?
+1. `docker run --name sif --net asgard --interactive --tty --rm redis:latest redis-cli -h thor ping` <-- this now works!
+1. `docker run --name heimdall --net asgard --interactive --tty --rm ubuntu:latest /bin/bash`
+1. `apt-get update && apt-get install dnsutils iputils-ping`
+1. `nslookup thor`
+1. `ping thor.asgard` -- the network name becomes the domain name
+1. `ctrl-c` then `exit`
+1. `docker run --name hogun --detach --publish-all redis:latest`
+1. `docker network inspect asgard` -- notice how `hogun` is not a member of the network?
+1. `docker network connect asgard hogun`
+1. `docker network inspect asgard` -- notice how `hogun` is now a member of the network?
+1. recreate `heimdall` and use him to see `hogun`
+1. `docker network disconnect asgard hogun` to remove `hogun` from the network
+
+
 
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
