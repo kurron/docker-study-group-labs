@@ -216,7 +216,7 @@ This is difficult to explain in text so try and be in class for this one.
 1. In the Docker Hub console, make sure your Docker build gets triggered
 1. Pull down the latest image and run it, ensuring your changes show up
 
-# Lab 12: Simple Volume Mount
+# Lab 13: Simple Volume Mount
 1. `cd docker-study-group-labs`
 1. `git reset --hard` <--- will nuke any local changes you may have made
 1. `git pull` to get the current bits
@@ -233,7 +233,7 @@ This is difficult to explain in text so try and be in class for this one.
 1. **Tip:** Volumes can also be shared between containers and can persist even when containers are stopped
 1. **Tip:** If the container directory doesn't exist Docker will create it.
 
-# Lab 13: Networking (single host setup)
+# Lab 14: Networking (single host setup)
 1. stop any running containers
 1. `docker rm --volumes --force $(docker ps --all --quiet)`
 1. `docker rmi --force $(docker images --quiet)`
@@ -243,7 +243,7 @@ This is difficult to explain in text so try and be in class for this one.
 1. `redis-cli -h 127.0.0.1 -p 32769 ping` <--- use your own port
 1. `docker run --name sif --interactive --tty --rm redis:latest redis-cli ping` <-- will fail with a connection error
 
-# Lab 14: Networking (Docker Internal Networking)
+# Lab 15: Networking (Docker Internal Networking)
 1. Every Docker container is assigned an IP address, provided through an interface created when we installed Docker. That interface is called `docker0`.
 1. `ip a show docker0` (you may have to install the `iproute2` package)
 1. The `docker0` interface is a virtual Ethernet bridge that connects our containers and the local host network.
@@ -262,7 +262,7 @@ This is difficult to explain in text so try and be in class for this one.
 1. `docker inspect -f '{{ .NetworkSettings.IPAddress }}' thor` -- address can change on you
 1. **TIP:** hard coding addresses and the fact that adresses can change make internal networking difficult to use in production
 
-# Lab 15: Networking (Docker Networking)
+# Lab 16: Networking (Docker Networking)
 1. stop any running containers
 1. `docker rm --volumes --force $(docker ps --all --quiet)`
 1. `docker rmi --force $(docker images --quiet)`
