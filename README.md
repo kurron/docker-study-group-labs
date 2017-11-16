@@ -254,12 +254,12 @@ This is difficult to explain in text so try and be in class for this one.
 1. `traceroute google.com` -- notice how we go through the `docker0` ip address?
 1. `exit`
 1. `sudo iptables --table nat --list --numeric` -- this is just to underscore that NAT is happening
-1. `docker inspect thor` or `docker inspect -f '{{ .NetworkSettings.IPAddress }}' thor` to get the ip address
+1. `docker inspect thor` or `docker inspect --format '{{ .NetworkSettings.IPAddress }}' thor` to get the ip address
 1. `redis-cli -h 172.17.0.2 ping` <--- use your own ip, notice we no longer have to specify a port
 1. `DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:32769 to:172.17.0.2:6379` show the NATing going on
-1. `docker inspect -f '{{ .NetworkSettings.IPAddress }}' thor` -- remember this value
+1. `docker inspect --format '{{ .NetworkSettings.IPAddress }}' thor` -- remember this value
 1. `docker restart thor`
-1. `docker inspect -f '{{ .NetworkSettings.IPAddress }}' thor` -- address can change on you
+1. `docker inspect --format '{{ .NetworkSettings.IPAddress }}' thor` -- address can change on you
 1. **TIP:** hard coding addresses and the fact that adresses can change make internal networking difficult to use in production
 
 # Lab 16: Networking (Docker Networking)
