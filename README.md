@@ -321,6 +321,36 @@ This is difficult to explain in text so try and be in class for this one.
 1. `env | sort`
 1. `exit`
 
+# Lab 19: More Fun With Volumes
+1. `cd solutions/lab-19`
+1. `cat nginx/Dockerfile`
+1. `docker build --tag="study-group/nginx:latest" nginx`
+1. `cat new-england/Dockerfile`
+1. `docker build --tag="study-group/new-england:latest" new-england`
+1. `cat miami/Dockerfile`
+1. `docker build --tag="study-group/miami:latest" miami`
+1. `docker images`
+1. `docker run --name new-england study-group/new-england:latest`
+1. `docker run --name miami study-group/miami:latest`
+1. `docker run --name superbowl --detach --publish-all --volumes-from new-england:ro study-group/nginx:latest nginx`
+1. `docker ps` <-- notice how only the `superbowl` container is running
+1. `IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' superbowl)`
+1. `curl --silent ${IP}`
+1. `docker stop superbowl`
+1. `docker rm superbowl`
+1. `docker run --name superbowl --detach --publish-all --volumes-from miami:ro study-group/nginx:latest nginx`
+1. `IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' superbowl)`
+1. `curl --silent ${IP}`
+1. `docker inspect -f "{{ range .Mounts }}{{.}}{{end}}" superbowl`
+1. `docker inspect -f "{{ range .Mounts }}{{.}}{{end}}" miami`
+1. `docker inspect -f "{{ range .Mounts }}{{.}}{{end}}" new-englad`
+1. use `ls` and `cat` to poke around those folders (need to use `sudo`)
+1. Volume Bullet Points
+  1. Volumes can be shared and reused between containers
+  1. A container doesn't have to be running to share its volumes
+  1. Changes to a volume are made directly
+  1. Changes to a volume will not be included when you update an image
+  1. Volumes persist even when no containers use them
 
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
