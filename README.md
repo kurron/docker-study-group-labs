@@ -308,6 +308,19 @@ This is difficult to explain in text so try and be in class for this one.
 1. **Tip:** [Drone](https://drone.io/) is a Docker-in-Docker build engine
 1. **Tip:** [Shippable](https://www.shippable.com/) is a CI/CD SaaS that supports Docker
 
+# Lab 18: Application Configuration, Docker Style
+1. `cd solutions/lab-18`
+1. `./clean-slate-protocol.sh`
+1. `docker run --interactive --tty --rm --workdir /work-area --volume ${PWD}/config.ini:/work-area/config.ini:ro ubuntu:latest bash`
+1. `cat config.ini`
+1. `exit`
+1. `docker run --interactive --tty --rm  --env username=logan --env password=Weapon-X ubuntu:latest bash`
+1. `env | sort`
+1. `exit`
+1. `docker run --interactive --tty --rm  --env-file config.ini ubuntu:latest bash`
+1. `env | sort`
+1. `exit`
+
 
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
