@@ -300,8 +300,9 @@ This is difficult to explain in text so try and be in class for this one.
 1. `docker build --tag="kurron/docker-in-docker:CentOS" .`
 1. `docker images` <-- notice the newly build CentOS images
 1. `docker run --rm kurron/docker-in-docker:CentOS`
-1. `docker run --interactive --tty --rm kurron/docker-in-docker:CentOS bash` <-- you just started a Docker container from within a Docker container!
+1. `docker run --interactive --tty --rm --cidfile=/tmp/containerid.txt kurron/docker-in-docker:CentOS bash` <-- you just started a Docker container from within a Docker container!
 1. `exit` <-- leave the CentOS container
+1. `cat /tmp/containerid.txt` <-- holds the id of the container we just exited
 1. `exit` <-- leave the docker-in-docker container
 
 
