@@ -304,6 +304,9 @@ This is difficult to explain in text so try and be in class for this one.
 1. `exit` <-- leave the CentOS container
 1. `cat /tmp/containerid.txt` <-- holds the id of the container we just exited
 1. `exit` <-- leave the docker-in-docker container
+1. **Tip:** use `docker wait <container id>` to wait for a long running container to exit, obtaining its exit code
+1. **Tip:** [Drone](https://drone.io/) is a Docker-in-Docker build engine
+1. **Tip:** [Shippable](https://www.shippable.com/) is a CI/CD SaaS that supports Docker
 
 
 # Lab N: Amazon EC2 Container Registry
