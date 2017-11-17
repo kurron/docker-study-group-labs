@@ -260,7 +260,7 @@ This is difficult to explain in text so try and be in class for this one.
 1. `docker inspect --format '{{ .NetworkSettings.IPAddress }}' thor` -- remember this value
 1. `docker restart thor`
 1. `docker inspect --format '{{ .NetworkSettings.IPAddress }}' thor` -- address can change on you
-1. **TIP:** hard coding addresses and the fact that adresses can change make internal networking difficult to use in production
+1. **TIP:** hard coding addresses and the fact that addresses can change make internal networking difficult to use in production
 
 # Lab 16: Networking (Docker Networking)
 1. stop any running containers
@@ -286,6 +286,23 @@ This is difficult to explain in text so try and be in class for this one.
 1. recreate `heimdall` and use him to see `hogun`
 1. `docker network disconnect asgard hogun` to remove `hogun` from the network
 
+# Lab 17: Docker Inside Docker...Whaaaaat?
+1. `cd solutions/lab-17`
+1. `./clean-slate-protocol.sh`
+1. `cat Dockerfile`
+1. `docker build --tag="kurron/docker-in-docker:latest" .`
+1. `docker run --rm kurron/docker-in-docker:latest`
+1. `docker run --interactive --tty --rm --workdir /work-area --volume ${PWD}:/work-area:ro kurron/docker-in-docker:latest bash`
+1. `docker build --tag="kurron/docker-in-docker:latest" .` <--- why does this fail?
+1. `exit`
+1. `docker run --interactive --tty --rm --workdir /work-area --volume /var/run/docker.sock:/var/run/docker.sock --volume ${PWD}/Dockerfile-CentOS:/work-area/Dockerfile:ro kurron/docker-in-docker:latest bash`
+1. `cat Dockerfile`
+1. `docker build --tag="kurron/docker-in-docker:CentOS" .`
+1. `docker images` <-- notice the newly build CentOS images
+1. `docker run --rm kurron/docker-in-docker:CentOS`
+1. `docker run --interactive --tty --rm kurron/docker-in-docker:CentOS bash` <-- you just started a Docker container from within a Docker container!
+1. `exit` <-- leave the CentOS container
+1. `exit` <-- leave the docker-in-docker container
 
 
 # Lab N: Amazon EC2 Container Registry
