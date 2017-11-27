@@ -1,0 +1,74 @@
+version: '3.2'
+
+volumes:
+    mongodb-data:
+    mysql-data:
+    mysql-configuration:
+    rabbitmq-data:
+    redis-data:
+
+services:
+    # document database
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        restart: always
+        volumes:
+            - type: volume
+              source: mongodb-data
+              target: /data/db
+        command: mongod --storageEngine=wiredTiger --wiredTigerCacheSizeGB=1 --notablescan --journalCommitInterval=300 --directoryperdb
+        networks:
+        - study-group
+
+    # relational database
+    mysql:
+        image: mysql:latest
+        container_name: mysql
+        volumes:
+            - type: volume
+              source: mysql-data
+              target: /var/lib/mysql
+            - type: volume
+              source: mysql-configuration
+              target: /etc/mysql/conf.d
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: sa
+            MYSQL_USER: mysql
+            MYSQL_PASSWORD: mysql
+            MYSQL_DATABASE: study-group
+        command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=1
+        networks:
+        - study-group
+
+    # message broker
+    rabbitmq:
+        image: rabbitmq:management
+        container_name: rabbitmq
+        volumes:
+            - type: volume
+              source: rabbitmq-data
+              target: /var/lib/rabbitmq
+        restart: always
+        environment:
+            RABBITMQ_DEFAULT_USER: guest
+            RABBITMQ_DEFAULT_PASS: guest
+            RABBITMQ_DEFAULT_VHOST: /
+        networks:
+        - study-group
+
+    # key-value database
+    redis:
+        image: redis:latest
+        container_name: redis
+        volumes:
+            - type: volume
+              source: redis-data
+              target: /data
+        restart: always
+        networks:
+        - study-group
+
+networks:
+    study-group:

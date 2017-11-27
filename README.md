@@ -323,6 +323,7 @@ This is difficult to explain in text so try and be in class for this one.
 
 # Lab 19: More Fun With Volumes
 1. `cd solutions/lab-19`
+1. `./clean-slate-protocol.sh`
 1. `cat nginx/Dockerfile`
 1. `docker build --tag="study-group/nginx:latest" nginx`
 1. `cat new-england/Dockerfile`
@@ -353,6 +354,22 @@ This is difficult to explain in text so try and be in class for this one.
   1. Changes to a volume are made directly
   1. Changes to a volume will not be included when you update an image
   1. Volumes persist even when no containers use them
+
+# Lab 20: Docker Compose
+1. `cd solutions/lab-20`
+1. `./clean-slate-protocol.sh`
+1. `cat install-docker-compose.sh`
+1. `./install-docker-compose.sh`
+1. `less docker-compose.yml`
+1. `docker-compose config`
+1. `docker-compose pull`
+1. `docker-compose images`
+1. `docker-compose up -d`
+1. `docker-compose ps`
+1. `docker-compose top`
+1. `docker-compose logs`
+1. `docker volume ls`
+1. `docker volume inspect lab20_mongodb-data`
 
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
