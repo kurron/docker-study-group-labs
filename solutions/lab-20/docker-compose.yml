@@ -70,5 +70,21 @@ services:
         networks:
         - study-group
 
+    # application the uses all the other services
+    showcase:
+        image: kurron/docker-compose-showcase-app:latest
+        container_name: showcase
+        restart: always
+        networks:
+        - study-group
+        ports:
+        - "8080"
+        environment:
+        - spring_data_mongodb_database=study-group
+        - spring_data_mongodb_host=mongodb
+        - spring_datasource_url=jdbc:mysql://mysql/study-group
+        - spring_redis_host=redis
+        - spring_rabbitmq_host=rabbitmq
+
 networks:
     study-group:

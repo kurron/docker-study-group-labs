@@ -370,6 +370,12 @@ This is difficult to explain in text so try and be in class for this one.
 1. `docker-compose logs`
 1. `docker volume ls`
 1. `docker volume inspect lab20_mongodb-data`
+1. `docker-compose up -d`
+1. `docker-compose ps`
+1. `docker-compose port showcase 8080`
+1. `curl --silent localhost:32811/operations/health | python -m json.tool` <--- use the correct port
+1. `curl --silent localhost:32811/operations/info | python -m json.tool` <--- use the correct port
+1. `docker-compose down --rmi all --volumes --remove-orphans`
 
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
