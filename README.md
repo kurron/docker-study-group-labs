@@ -349,11 +349,11 @@ This is difficult to explain in text so try and be in class for this one.
 1. `docker run --rm --volumes-from new-england:ro --volume $(pwd):/backup:rw ubuntu tar cvf /backup/backup.tar /var/www/html`
 1. `tar --list --verbose --file backup.tar`
 1. Volume Bullet Points
-  1. Volumes can be shared and reused between containers
-  1. A container doesn't have to be running to share its volumes
-  1. Changes to a volume are made directly
-  1. Changes to a volume will not be included when you update an image
-  1. Volumes persist even when no containers use them
+  - Volumes can be shared and reused between containers
+  - A container doesn't have to be running to share its volumes
+  - Changes to a volume are made directly
+  - Changes to a volume will not be included when you update an image
+  - Volumes persist even when no containers use them
 
 # Lab 20: Docker Compose
 1. `cd solutions/lab-20`
