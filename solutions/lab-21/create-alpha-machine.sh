@@ -23,3 +23,4 @@ CMD="docker-machine create --driver amazonec2 \
                            --engine-label role=console \
                            alpha"
 echo ${CMD}
+${CMD}
