@@ -386,12 +386,22 @@ This is difficult to explain in text so try and be in class for this one.
 1. `./install-docker-machine.sh`
 1. `docker-machine --help`
 1. `docker-machine create --help`
+1. `cat fix-ssh-key-permissions.sh`
 1. `./fix-ssh-key-permissions.sh`
+1. `cat create-docker-machine.sh`
+1. `cat create-alpha-machine.sh`
 1. `./create-alpha-machine.sh us-east-1`
 1. `./create-bravo-machine.sh us-east-1`
 1. `./create-charlie-machine.sh us-east-1`
 1. `./create-delta-machine.sh us-east-1`
 1. `./create-echo-machine.sh us-east-1`
+1. `cat fix-docker-permissions.sh`
+1. `./fix-docker-permissions.sh <alpha ip>`
+1. `./fix-docker-permissions.sh <bravo ip>`
+1. `./fix-docker-permissions.sh <charlie ip>`
+1. `./fix-docker-permissions.sh <delta ip>`
+1. `./fix-docker-permissions.sh <echo ip>`
+1. stop all instances. **DO NOT** terminate them or you will have to recreate everything.
 
 # Lab 22: Docker Swarm
 
