@@ -7,12 +7,15 @@ INSTANCE_TYPE=$(curl --silent http://169.254.169.254/latest/meta-data/instance-t
 INTERFACE=$(curl --silent http://169.254.169.254/latest/meta-data/network/interfaces/macs/)
 SUBNET_ID=$(curl --silent http://169.254.169.254/latest/meta-data/network/interfaces/macs/${INTERFACE}/subnet-id)
 VPC_ID=$(curl --silent http://169.254.169.254/latest/meta-data/network/interfaces/macs/${INTERFACE}/vpc-id)
+
+# These need to match your account
+REGION="us-west-2"
 SECURITY_GROUP_ID="sg-ef8dc992"
 
 CMD="docker-machine create --driver amazonec2 \
                            --amazonec2-ami ${AMI} \
                            --amazonec2-instance-type ${INSTANCE_TYPE} \
-                           --amazonec2-region us-east-1 \
+                           --amazonec2-region ${REGION} \
                            --amazonec2-ssh-keypath ./study-group \
                            --amazonec2-ssh-user ubuntu \
                            --amazonec2-tags Name,alpha,project,study-group \
