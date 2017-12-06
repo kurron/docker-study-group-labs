@@ -377,6 +377,20 @@ This is difficult to explain in text so try and be in class for this one.
 1. `curl --silent localhost:32811/operations/info | python -m json.tool` <--- use the correct port
 1. `docker-compose down --rmi all --volumes --remove-orphans`
 
+# Lab 21: Docker Machine
+>Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands. You can use Machine to create Docker hosts on your local Mac or Windows box, on your company network, in your data center, or on cloud providers like Azure, AWS, or Digital Ocean.
+
+1. `git reset --hard`
+1. `cd solutions/lab-21`
+1. `./clean-slate-protocol.sh`
+1. `./install-docker-machine.sh`
+1. `docker-machine --help`
+1. `docker-machine create --help`
+1. ``
+
+# Lab 22: Docker Swarm
+
+# Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
 # Lab N: Dockerfile Madness (advanced) (4.5.10.10)
