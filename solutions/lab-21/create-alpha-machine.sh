@@ -7,8 +7,10 @@ INTERFACE=$(curl --silent http://169.254.169.254/latest/meta-data/network/interf
 SUBNET_ID=$(curl --silent http://169.254.169.254/latest/meta-data/network/interfaces/macs/${INTERFACE}/subnet-id)
 VPC_ID=$(curl --silent http://169.254.169.254/latest/meta-data/network/interfaces/macs/${INTERFACE}/vpc-id)
 NAME="alpha"
+
 # These need to match your account
-REGION="us-west-2"
+REGION=${1:-us-west-2}
+
 
 # Can anyone spot missing information usually required to create an EC2 instance?
 CMD="docker-machine create --driver amazonec2 \
