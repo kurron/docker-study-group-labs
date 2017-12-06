@@ -2,8 +2,8 @@
 
 #docker-machine create --driver amazonec2 --amazonec2-access-key AKI******* --amazonec2-secret-key 8T93C*******  aws-sandbox
 
-AMI=$(curl http://169.254.169.254/latest/meta-data/ami-id)
-INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
+AMI=$(curl --silent http://169.254.169.254/latest/meta-data/ami-id)
+INSTANCE_TYPE=$(curl --silent http://169.254.169.254/latest/meta-data/instance-type)
 INTERFACE=$(curl --silent http://169.254.169.254/latest/meta-data/network/interfaces/macs/)
 SUBNET_ID=$(curl --silent http://169.254.169.254/latest/meta-data/network/interfaces/macs/${INTERFACE}/subnet-id)
 VPC_ID=$(curl --silent http://169.254.169.254/latest/meta-data/network/interfaces/macs/${INTERFACE}/vpc-id)
