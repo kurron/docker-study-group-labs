@@ -15,7 +15,7 @@ CMD="docker-machine create --driver amazonec2 \
                            --amazonec2-instance-type ${INSTANCE_TYPE} \
                            --amazonec2-region ${REGION} \
                            --amazonec2-ssh-keypath ./study-group \
-                           --amazonec2-tags Name,${NAME},project,study-group \
+                           --amazonec2-tags Name,${NAME},Project,study-group \
                            --amazonec2-subnet-id ${SUBNET_ID} \
                            --amazonec2-vpc-id ${VPC_ID} \
                            --engine-label size=small \
