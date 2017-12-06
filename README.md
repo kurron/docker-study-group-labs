@@ -386,7 +386,8 @@ This is difficult to explain in text so try and be in class for this one.
 1. `./install-docker-machine.sh`
 1. `docker-machine --help`
 1. `docker-machine create --help`
-1. ``
+1. `./fix-ssh-key-permissions.sh`
+1. `./create-alpha-machine.sh`
 
 # Lab 22: Docker Swarm
 
