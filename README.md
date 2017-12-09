@@ -401,9 +401,42 @@ This is difficult to explain in text so try and be in class for this one.
 1. `./fix-docker-permissions.sh <charlie ip>`
 1. `./fix-docker-permissions.sh <delta ip>`
 1. `./fix-docker-permissions.sh <echo ip>`
-1. stop all instances. **DO NOT** terminate them or you will have to recreate everything.
+1. `docker-machine ls`
+1. `docker-machine inspect alpha`
+1. `docker-machine ip bravo`
+1. `docker-machine ssh charlie hostname`
+1. `docker-machine scp fix-ssh-key-permissions.sh delta:/tmp`
+1. `docker-machine url echo`
+1. `docker-machine ls`
+1. `docker-machine stop charlie`
+1. `docker-machine ls`
+1. examine the EC2 console to see the status of the charlie instance
+1. `docker-machine start charlie`
+1. `docker-machine ls` <-- what is it complaining about and why?
+1. `docker-machine regenerate-certs charlie`
+1. `docker-machine ls`
+1. `docker-machine status delta`
+1. `docker-machine restart echo`
+1. `docker-machine ls`
+1. `docker-machine version alpha`
+1. `docker-machine upgrade alpha`
+1. `docker-machine rm alpha`
+1. See if alpha is in the EC2 console
+1. `docker-machine stop bravo charlie delta echo`
 
-# Lab 22: Docker Swarm
+# Lab 22: Docker Swarm (creation)
+>A swarm is a cluster of Docker Engines where you deploy services. The Docker Engine CLI includes the commands for swarm management, such as adding and removing nodes. The CLI also includes the commands you need to deploy services to the swarm and manage service orchestration. A node is an instance of the Docker Engine participating in the swarm.
+1. `git reset --hard`
+1. `cd solutions/lab-22`
+1. `./clean-slate-protocol.sh`
+1. `docker-machine start bravo charlie delta echo`
+1. `docker-machine ls`
+1. `docker-machine regenerate-certs bravo charlie delta echo`
+1. `docker-machine ls`
+1. In the EC2 console, adjust the security group to allow ingress on ports 22, 2376, 2377, 3376, 7946 (tcp and udp), 4789(udp)
+1. `cat create-swarm.sh`
+1. `./create-swarm.sh`
+
 
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
