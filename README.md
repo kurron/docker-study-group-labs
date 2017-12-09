@@ -440,11 +440,19 @@ This is difficult to explain in text so try and be in class for this one.
 # Lab 23: Docker Swarm (network creation)
 >As of Docker 1.9.0, the ability to create a network specific to a set of containers was added.  There are couple forms of Docker networking but we'll be focusing on overlay networking, aka multi-host networking.  Based on Virtual Extensible LAN (VXLAN) technology, an overlay network gives each container participating in the network its own ip address.  The address is only routable to containers participating in the network.  Since each container gets its own address, you won't get port collisions and you don't have to play the "port mapping game" to find an open port to bind your service to.  Containers can participate in multiple networks so you have the ability to segregate parts of your architecture and still route traffic to where it needs to go.  Finally, networks created on the Swarm manager node are automatically made available to the Swarm workers.  There is a legacy networking mode that required a dedicated consensus server so if you see instructions requiring Consul or etcd to be installed, it is probably dealing with the legacy stuff.
 1. `git reset --hard`
-1. `cd solutions/lab-22`
+1. `cd solutions/lab-23`
 1. `./clean-slate-protocol.sh`
 1. `cat create-network.sh`
 1. `./create-network.sh`
 
+# Lab 24: Docker Swarm (Global Services)
+>Swarm supports two types of services.  One type, the Global Service, is a container that is targeted to all nodes in the swarm.  So, if you have 10 nodes in your swarm, then all 10 will contain the global services you have deployed.  The second type, the Replicated Service, is a container that is targeted to a specific deployment count.  For example, if I have a stateless web application and I specify a replication of 3, then 3 out of my 10 containers will be running an instance of the web application
+![Swarm Diagram](https://docs.docker.com/engine/swarm/images/replicated-vs-global.png)
+1. `git reset --hard`
+1. `cd solutions/lab-24`
+1. `./clean-slate-protocol.sh`
+1. `cat create-global-service.sh`
+1. `./create-global-service.sh`
 
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
