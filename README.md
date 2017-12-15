@@ -454,6 +454,15 @@ This is difficult to explain in text so try and be in class for this one.
 1. `cat create-global-service.sh`
 1. `./create-global-service.sh`
 
+# Lab 25: Docker Swarm (Replicated Services)
+>Last time, we talked about global services.  Today we'll look at replicated services.  As the name suggests, the desire is to have multiple copies of a container running in the cluster.  Containers housing stateless applications, such as a static web site, are candidates for replication.  Containers that rely on local state will not work properly as a replicated service due to migration and load balancing issues.   So what is a replicated service? If you need multiple containers to be running, probably for availability reasons, you can easily tell Docker that you would like N number of containers running at all times.
+
+1. `git reset --hard`
+1. `cd solutions/lab-25`
+1. `./clean-slate-protocol.sh`
+1. `cat create-replicated-service.sh`
+1. `./create-replicated-service.sh`
+
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
