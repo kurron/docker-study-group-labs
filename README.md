@@ -463,6 +463,15 @@ This is difficult to explain in text so try and be in class for this one.
 1. `cat create-replicated-service.sh`
 1. `./create-replicated-service.sh`
 
+# Lab 26: Docker Swarm (Constrained Services)
+>Last time, we looked at replicated services.  Today we'll look at a nuanced version of replicated services: constrained services.  The primary difference between a replicated service and a constrained one is that we can put restrictions on where the containers can be run.  The simplest constraint is to put containers on nodes that have been tagged with a particular label.  You can also use other placement criteria using simple boolean expressions but the currently available selection attributes are more limited than what you'll find in other schedulers, such a Kubernetes or Nomad.
+
+1. `git reset --hard`
+1. `cd solutions/lab-26`
+1. `./clean-slate-protocol.sh`
+1. `cat create-constrained-service.sh`
+1. `./create-constrained-service.sh`
+
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
