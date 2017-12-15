@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo Scale down the constrained service
-DEPLOY="docker-machine ssh bravo sudo docker service scale hello-constrained=1"
+DEPLOY="docker-machine ssh bravo docker service scale hello-constrained=1"
 echo ${DEPLOY}
 ${DEPLOY}
 
