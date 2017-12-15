@@ -492,6 +492,17 @@ Last time, we looked at constrained deployments.  Today we'll see how to scale o
 
 As you can see, we are telling Docker to scale back our hello-constrained service down to a single instance.  The interesting part of this example is that we can see that the swarm is turning off instances on nodes, leaving us with the single instance.  Again, this is an example of declarative operations.  We're telling Docker **what** we want, **not how to do it**.
 
+# Lab 28: Docker Swarm (Removal)
+Last time, we looked at how to scale down our services.  Today, we'll look at how to remove them all together.
+
+1. `git reset --hard`
+1. `cd solutions/lab-28`
+1. `./clean-slate-protocol.sh`
+1. `cat remove-service.sh`
+1. `./remove-service.sh`
+
+As you can see, removing a service is very straight forward and is simple as removing a file in Linux. 
+
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
