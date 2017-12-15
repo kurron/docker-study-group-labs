@@ -501,7 +501,18 @@ Last time, we looked at how to scale down our services.  Today, we'll look at ho
 1. `cat remove-service.sh`
 1. `./remove-service.sh`
 
-As you can see, removing a service is very straight forward and is simple as removing a file in Linux. 
+As you can see, removing a service is very straight forward and is simple as removing a file in Linux.
+
+# Lab 29: Docker Swarm (Upgrade)
+Last time, we saw how simple it was to remove a service from the swarm.  Today, we'll look at something a little more interesting: rolling upgrades.  The scenario is this, you have an existing collection of services deployed and you need to upgrade them to current bits.  You would love for the service to remain available during the upgrade process and avoid making your customers unhappy.  How can this be done?  The answer is Docker's rolling upgrades.  The idea is simple, once the process is started, one by one a service in the swarm gets replaced with a newer version.  During the process, you will have a mixture of the new and old bits so your solution cannot be sensitive to that fact.  Lets see how this looks in practice.
+
+1. `git reset --hard`
+1. `cd solutions/lab-29`
+1. `./clean-slate-protocol.sh`
+1. `cat upgrade-service.sh`
+1. `./upgrade-service.sh`
+
+In this simple example, we install version 3.0.6 of Redis into the swarm and later decide to upgrade Redis 3.0.7.  This example is contrived and doesn't incorporate things you might do in a real setting, such as monitoring of the state of the containers as they transition or what to do if there is a problem during the replacement process.
 
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
