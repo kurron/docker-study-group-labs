@@ -378,7 +378,7 @@ This is difficult to explain in text so try and be in class for this one.
 1. `docker-compose down --rmi all --volumes --remove-orphans`
 
 # Lab 21: Docker Machine
->Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands. You can use Machine to create Docker hosts on your local Mac or Windows box, on your company network, in your data center, or on cloud providers like Azure, AWS, or Digital Ocean.
+Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands. You can use Machine to create Docker hosts on your local Mac or Windows box, on your company network, in your data center, or on cloud providers like Azure, AWS, or Digital Ocean.
 
 1. `git reset --hard`
 1. `cd solutions/lab-21`
@@ -425,7 +425,8 @@ This is difficult to explain in text so try and be in class for this one.
 1. `docker-machine stop bravo charlie delta echo`
 
 # Lab 22: Docker Swarm (creation)
->A swarm is a cluster of Docker Engines where you deploy services. The Docker Engine CLI includes the commands for swarm management, such as adding and removing nodes. The CLI also includes the commands you need to deploy services to the swarm and manage service orchestration. A node is an instance of the Docker Engine participating in the swarm.
+A swarm is a cluster of Docker Engines where you deploy services. The Docker Engine CLI includes the commands for swarm management, such as adding and removing nodes. The CLI also includes the commands you need to deploy services to the swarm and manage service orchestration. A node is an instance of the Docker Engine participating in the swarm.
+
 1. `git reset --hard`
 1. `cd solutions/lab-22`
 1. `./clean-slate-protocol.sh`
@@ -438,7 +439,7 @@ This is difficult to explain in text so try and be in class for this one.
 1. `./create-swarm.sh`
 
 # Lab 23: Docker Swarm (network creation)
->As of Docker 1.9.0, the ability to create a network specific to a set of containers was added.  There are couple forms of Docker networking but we'll be focusing on overlay networking, aka multi-host networking.  Based on Virtual Extensible LAN (VXLAN) technology, an overlay network gives each container participating in the network its own ip address.  The address is only routable to containers participating in the network.  Since each container gets its own address, you won't get port collisions and you don't have to play the "port mapping game" to find an open port to bind your service to.  Containers can participate in multiple networks so you have the ability to segregate parts of your architecture and still route traffic to where it needs to go.  Finally, networks created on the Swarm manager node are automatically made available to the Swarm workers.  There is a legacy networking mode that required a dedicated consensus server so if you see instructions requiring Consul or etcd to be installed, it is probably dealing with the legacy stuff.
+As of Docker 1.9.0, the ability to create a network specific to a set of containers was added.  There are couple forms of Docker networking but we'll be focusing on overlay networking, aka multi-host networking.  Based on Virtual Extensible LAN (VXLAN) technology, an overlay network gives each container participating in the network its own ip address.  The address is only routable to containers participating in the network.  Since each container gets its own address, you won't get port collisions and you don't have to play the "port mapping game" to find an open port to bind your service to.  Containers can participate in multiple networks so you have the ability to segregate parts of your architecture and still route traffic to where it needs to go.  Finally, networks created on the Swarm manager node are automatically made available to the Swarm workers.  There is a legacy networking mode that required a dedicated consensus server so if you see instructions requiring Consul or etcd to be installed, it is probably dealing with the legacy stuff.
 
 1. `git reset --hard`
 1. `cd solutions/lab-23`
@@ -447,7 +448,7 @@ This is difficult to explain in text so try and be in class for this one.
 1. `./create-network.sh`
 
 # Lab 24: Docker Swarm (Global Services)
->Swarm supports two types of services.  One type, the Global Service, is a container that is targeted to all nodes in the swarm.  So, if you have 10 nodes in your swarm, then all 10 will contain the global services you have deployed.  The second type, the Replicated Service, is a container that is targeted to a specific deployment count.  For example, if I have a stateless web application and I specify a replication of 3, then 3 out of my 10 containers will be running an instance of the web application
+Swarm supports two types of services.  One type, the Global Service, is a container that is targeted to all nodes in the swarm.  So, if you have 10 nodes in your swarm, then all 10 will contain the global services you have deployed.  The second type, the Replicated Service, is a container that is targeted to a specific deployment count.  For example, if I have a stateless web application and I specify a replication of 3, then 3 out of my 10 containers will be running an instance of the web application
 ![Swarm Diagram](https://docs.docker.com/engine/swarm/images/replicated-vs-global.png)
 
 1. `git reset --hard`
@@ -456,10 +457,10 @@ This is difficult to explain in text so try and be in class for this one.
 1. `cat create-global-service.sh`
 1. `./create-global-service.sh`
 
->Notice all the nodes, including the manager node, now have hello-global service running on them?  If I were to add another node to the swarm, it would also get told to run the service.  When would you want to use a global service?  I use them for "bookkeeping" type of containers such as DataDog or Consul.
+Notice all the nodes, including the manager node, now have hello-global service running on them?  If I were to add another node to the swarm, it would also get told to run the service.  When would you want to use a global service?  I use them for "bookkeeping" type of containers such as DataDog or Consul.
 
 # Lab 25: Docker Swarm (Replicated Services)
->Last time, we talked about global services.  Today we'll look at replicated services.  As the name suggests, the desire is to have multiple copies of a container running in the cluster.  Containers housing stateless applications, such as a static web site, are candidates for replication.  Containers that rely on local state will not work properly as a replicated service due to migration and load balancing issues.   So what is a replicated service? If you need multiple containers to be running, probably for availability reasons, you can easily tell Docker that you would like N number of containers running at all times.
+Last time, we talked about global services.  Today we'll look at replicated services.  As the name suggests, the desire is to have multiple copies of a container running in the cluster.  Containers housing stateless applications, such as a static web site, are candidates for replication.  Containers that rely on local state will not work properly as a replicated service due to migration and load balancing issues.   So what is a replicated service? If you need multiple containers to be running, probably for availability reasons, you can easily tell Docker that you would like N number of containers running at all times.
 
 1. `git reset --hard`
 1. `cd solutions/lab-25`
@@ -467,10 +468,10 @@ This is difficult to explain in text so try and be in class for this one.
 1. `cat create-replicated-service.sh`
 1. `./create-replicated-service.sh`
 
->In the above example, we told Docker to deploy 2 copies of the alpine container into the cluster.  We don't care what nodes are running the containers, just as long as there are two of them.  If possible, Docker will schedule the containers on separate hosts.  If a container fails, then it will be replaced.  Very straightforward.  Next time, we'll showcase constrained services which give us a bit more control over the placement of our containers.
+In the above example, we told Docker to deploy 2 copies of the alpine container into the cluster.  We don't care what nodes are running the containers, just as long as there are two of them.  If possible, Docker will schedule the containers on separate hosts.  If a container fails, then it will be replaced.  Very straightforward.  Next time, we'll showcase constrained services which give us a bit more control over the placement of our containers.
 
 # Lab 26: Docker Swarm (Constrained Services)
->Last time, we looked at replicated services.  Today we'll look at a nuanced version of replicated services: constrained services.  The primary difference between a replicated service and a constrained one is that we can put restrictions on where the containers can be run.  The simplest constraint is to put containers on nodes that have been tagged with a particular label.  You can also use other placement criteria using simple boolean expressions but the currently available selection attributes are more limited than what you'll find in other schedulers, such a Kubernetes or Nomad.
+Last time, we looked at replicated services.  Today we'll look at a nuanced version of replicated services: constrained services.  The primary difference between a replicated service and a constrained one is that we can put restrictions on where the containers can be run.  The simplest constraint is to put containers on nodes that have been tagged with a particular label.  You can also use other placement criteria using simple boolean expressions but the currently available selection attributes are more limited than what you'll find in other schedulers, such a Kubernetes or Nomad.
 
 1. `git reset --hard`
 1. `cd solutions/lab-26`
@@ -478,7 +479,18 @@ This is difficult to explain in text so try and be in class for this one.
 1. `cat create-constrained-service.sh`
 1. `./create-constrained-service.sh`
 
->In this example, we are asking to have our 3 alpine containers to only run on worker nodes and Docker will do its best to comply.  If there are no nodes tagged as being workers, Docker will wait until one becomes available and start the containers.  Next time, we'll learn how to scale down our running services.
+In this example, we are asking to have our 3 alpine containers to only run on worker nodes and Docker will do its best to comply.  If there are no nodes tagged as being workers, Docker will wait until one becomes available and start the containers.  Next time, we'll learn how to scale down our running services.
+
+# Lab 27: Docker Swarm (Scale Down)
+Last time, we looked at constrained deployments.  Today we'll see how to scale our services down.  In truth, there really isn't much to do because Docker takes care of everything for us.  All we need to do is to tell the swarm how many instances we need currently.
+
+1. `git reset --hard`
+1. `cd solutions/lab-26`
+1. `./clean-slate-protocol.sh`
+1. `cat scale-down-service.sh`
+1. `./scale-down-service.sh`
+
+As you can see, we are telling Docker to scale back our hello-constrained service down to a single instance.  The interesting part of this example is that we can see that the swarm is turning off instances on nodes, leaving us with the single instance.  Again, this is an example of declarative operations.  We're telling Docker **what** we want, **not how to do it**.
 
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
