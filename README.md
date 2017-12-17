@@ -514,6 +514,17 @@ Last time, we saw how simple it was to remove a service from the swarm.  Today, 
 
 In this simple example, we install version 3.0.6 of Redis into the swarm and later decide to upgrade Redis 3.0.7.  This example is contrived and doesn't incorporate things you might do in a real setting, such as monitoring of the state of the containers as they transition or what to do if there is a problem during the replacement process.
 
+# Lab 30: Docker Swarm (Maintenance)
+Last time, we looked at rolling upgrades.  Today, we'll learn how to temporarily take a node off-line for maintenance. At some point, you are probably going to have turn your node off and perform some maintenance on the box it is running on.  It could be a simple as upgrading the version of Docker or as complex as swapping out a drive.  During that time, you want to tell the Swarm that the node is temporarily going away and that some other node needs to take its place in the interim.  Thankfully, the process is pretty simple.
+
+1. `git reset --hard`
+1. `cd solutions/lab-30`
+1. `./clean-slate-protocol.sh`
+1. `cat maintenance-mode.sh`
+1. `./maintenance-mode.sh`
+
+Things to note in the above session. First, the work shifts from delta to echo.  Second, once we bring delta back on-line the work remains with echo: no rebalancing of the work occurs.
+
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
