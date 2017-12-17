@@ -50,7 +50,7 @@ echo
 echo Grab the IP address of Bravo
 BRAVO="docker-machine ip bravo"
 echo ${BRAVO}
-IP=$(docker-machine ip bravo)
+export IP=$(docker-machine ip bravo)
 echo ${IP}
 
 echo

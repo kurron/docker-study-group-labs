@@ -534,7 +534,8 @@ Things to note in the above session. First, the work shifts from delta to echo. 
 1. `cat service-discovery.sh`
 1. `./service-discovery.sh`
 1. adjust the `docker-machine` security group to allows port 80 traffic to flow
-1. run `curl 52.35.15.170 | python3 -m json.tool` a couple times, noticing the changing ip
+1. run `curl --silent ${IP} | python3 -m json.tool` a couple times, noticing the changing ip
+1. look up the **public** address of some of the other nodes and hit those
 1. adjust the scale up or down and see how results are affected
 1. `docker-machine ssh bravo docker service scale nginx=2`
 1. `docker-machine ssh bravo docker service ps nginx`
