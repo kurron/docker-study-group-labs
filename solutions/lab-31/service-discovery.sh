@@ -6,7 +6,7 @@ INSTALL="docker-machine ssh bravo docker service create --mode replicated \
                                                         --name nginx \
                                                         --update-delay 10s \
                                                         --network showcase \
-                                                        --endpoint-mode dnsrr \
+                                                        --publish published=8080,target=80 \
                                                         nginx:latest"
 echo ${INSTALL}
 ${INSTALL}
