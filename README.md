@@ -533,12 +533,8 @@ Things to note in the above session. First, the work shifts from delta to echo. 
 1. `./clean-slate-protocol.sh`
 1. `cat service-discovery.sh`
 1. `./service-discovery.sh`
-1. Note the node that Busybox is running on
-1. `docker-machine ssh delta docker ps` to get the container id of Busybox
-1. `docker-machine ssh delta`
-1. `docker exec --interactive --tty 728ae9553ea6 /bin/sh`
+1. adjust the `docker-machine` security group to allows port 80 traffic to flow
 1. 
-
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)

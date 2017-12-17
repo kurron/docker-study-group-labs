@@ -7,8 +7,8 @@ INSTALL="docker-machine ssh bravo docker service create --mode replicated \
                                                         --update-delay 10s \
                                                         --network showcase \
                                                         --constraint 'node.role==worker' \
-                                                        --publish published=8080,target=80 \
-                                                        nginx:latest"
+                                                        --publish published=80,target=8080 \
+                                                        kurron/spring-cloud-aws-echo:latest"
 echo ${INSTALL}
 ${INSTALL}
 
@@ -47,42 +47,17 @@ echo Press a key to proceed
 read -n 1 -s
 
 echo
-echo Install Busybox Service
-INSTALL_BB="docker-machine ssh bravo docker service create --mode replicated \
-                                                           --replicas 1 \
-                                                           --name busybox \
-                                                           --update-delay 10s \
-                                                           --network showcase \
-                                                           busybox:latest sleep 3000"
-echo ${INSTALL_BB}
-${INSTALL_BB}
+echo Grab the IP address of Bravo
+BRAVO="docker-machine ip bravo"
+echo ${BRAVO}
+IP=$(${BRAVO})
 
 echo
 echo Press a key to proceed
 read -n 1 -s
 
 echo
-echo Inspect the service
-INSPECT_BB="docker-machine ssh bravo docker service inspect --pretty busybox"
-echo ${INSPECT_BB}
-${INSPECT_BB}
-
-echo
-echo Press a key to proceed
-read -n 1 -s
-
-echo
-echo Inspect the status of the services
-STATUS="docker-machine ssh bravo docker service ls"
-echo ${STATUS}
-${STATUS}
-
-echo
-echo Press a key to proceed
-read -n 1 -s
-
-echo
-echo List where Busybox service is running
-LIST="docker-machine ssh bravo docker service ps busybox"
-echo ${LIST}
-${LIST}
+echo Hit Bravo to access a service running on Charlie/Delta/Echo
+HIT="curl --silent ${BRAVO}:8080"
+echo ${HIT}
+${HIT}
