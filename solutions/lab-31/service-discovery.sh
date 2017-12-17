@@ -50,7 +50,8 @@ echo
 echo Grab the IP address of Bravo
 BRAVO="docker-machine ip bravo"
 echo ${BRAVO}
-IP=$(${BRAVO})
+IP=$(docker-machine ip bravo)
+echo ${IP}
 
 echo
 echo Press a key to proceed
@@ -58,6 +59,6 @@ read -n 1 -s
 
 echo
 echo Hit Bravo to access a service running on Charlie/Delta/Echo
-HIT="curl --silent ${BRAVO}:8080"
+HIT="curl --silent ${BRAVO} | python3 -m json.tool"
 echo ${HIT}
 ${HIT}
