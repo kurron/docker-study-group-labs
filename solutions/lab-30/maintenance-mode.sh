@@ -31,7 +31,7 @@ read -n 1 -s
 
 echo Monitor the transition between versions
 echo
-MONITOR="watch 'docker-machine ssh bravo docker service ps redis'""
+MONITOR="watch 'docker-machine ssh bravo docker service ps redis'"
 echo ${MONITOR}
 ${MONITOR}
 
