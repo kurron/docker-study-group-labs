@@ -525,6 +525,15 @@ Last time, we looked at rolling upgrades.  Today, we'll learn how to temporarily
 
 Things to note in the above session. First, the work shifts from delta to echo.  Second, once we bring delta back on-line the work remains with echo: no rebalancing of the work occurs.
 
+# Lab 31: Docker Swarm (Service Discovery)
+![Service Disocvery Diagram](https://docs.docker.com/engine/swarm/images/service-vip.png)
+
+1. `git reset --hard`
+1. `cd solutions/lab-31`
+1. `./clean-slate-protocol.sh`
+1. `cat service-discovery.sh`
+1. `./service-discovery.sh`
+
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
