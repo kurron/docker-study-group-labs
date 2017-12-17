@@ -31,9 +31,9 @@ read -n 1 -s
 
 echo Monitor the transition between versions
 echo
-MONITOR="watch 'docker-machine ssh bravo docker service ps redis'"
+MONITOR="docker-machine ssh bravo docker service ps redis"
 echo ${MONITOR}
-${MONITOR}
+watch ${MONITOR}
 
 echo Put delta into active mode
 ACTIVE="docker-machine ssh bravo docker node update --availability active delta"
@@ -58,4 +58,4 @@ ${STATUS}
 
 echo See where the containers are deployed
 echo ${MONITOR}
-${MONITOR}
+watch ${MONITOR}
