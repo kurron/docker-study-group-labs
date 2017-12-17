@@ -25,6 +25,27 @@ echo
 echo Press a key to proceed
 read -n 1 -s
 
+echo
+echo List the status of all services
+ALL="docker-machine ssh bravo docker service ls"
+echo ${ALL}
+${ALL}
+
+echo
+echo Press a key to proceed
+read -n 1 -s
+
+echo
+echo List who is running the Nginx containers
+NGINX="docker-machine ssh bravo docker service ps nginx"
+echo ${NGINX}
+${NGINX}
+
+echo
+echo Press a key to proceed
+read -n 1 -s
+
+echo
 echo Install Busybox Service
 INSTALL_BB="docker-machine ssh bravo docker service create --mode replicated \
                                                            --replicas 1 \
@@ -59,8 +80,8 @@ echo
 echo Press a key to proceed
 read -n 1 -s
 
-echo List where Busybox service is running
 echo
+echo List where Busybox service is running
 LIST="docker-machine ssh bravo docker service ps busybox"
 echo ${LIST}
 ${LIST}
