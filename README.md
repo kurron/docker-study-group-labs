@@ -526,13 +526,15 @@ Last time, we looked at rolling upgrades.  Today, we'll learn how to temporarily
 Things to note in the above session. First, the work shifts from delta to echo.  Second, once we bring delta back on-line the work remains with echo: no rebalancing of the work occurs.
 
 # Lab 31: Docker Swarm (Service Mesh)
-![Service Disocvery Diagram](https://docs.docker.com/engine/swarm/images/service-vip.png)
+>Docker Engine swarm mode makes it easy to publish ports for services to make them available to resources outside the swarm. All nodes participate in an ingress routing mesh. The routing mesh enables each node in the swarm to accept connections on published ports for any service running in the swarm, even if there’s no task running on the node. The routing mesh routes all incoming requests to published ports on available nodes to an active container.
+
+![Service Mesh Diagram](https://docs.docker.com/engine/swarm/images/ingress-routing-mesh.png)
 
 1. `git reset --hard`
 1. `cd solutions/lab-31`
 1. `./clean-slate-protocol.sh`
-1. `cat service-discovery.sh`
-1. `./service-discovery.sh`
+1. `cat service-mesh.sh`
+1. `./service-mesh.sh`
 1. adjust the `docker-machine` security group to allows port 80 traffic to flow
 1. run `curl --silent ${IP} | python3 -m json.tool` a couple times, noticing the changing ip
 1. look up the **public** address of some of the other nodes and hit those
