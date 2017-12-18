@@ -59,6 +59,6 @@ read -n 1 -s
 
 echo
 echo Hit Bravo to access a service running on Charlie/Delta/Echo
-HIT="curl --silent ${BRAVO} | python3 -m json.tool"
+HIT="curl --silent ${IP} | python3 -m json.tool"
 echo ${HIT}
 ${HIT}
