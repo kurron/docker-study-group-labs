@@ -52,13 +52,3 @@ BRAVO="docker-machine ip bravo"
 echo ${BRAVO}
 export IP=$(docker-machine ip bravo)
 echo ${IP}
-
-echo
-echo Press a key to proceed
-read -n 1 -s
-
-echo
-echo Hit Bravo to access a service running on Charlie/Delta/Echo
-HIT="curl --silent ${IP} | python3 -m json.tool"
-echo ${HIT}
-${HIT}
