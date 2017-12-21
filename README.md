@@ -390,11 +390,11 @@ Docker Machine is a tool that lets you install Docker Engine on virtual hosts, a
 1. `./fix-ssh-key-permissions.sh`
 1. `cat create-docker-machine.sh`
 1. `cat create-alpha-machine.sh`
-1. `./create-alpha-machine.sh us-east-1`
-1. `./create-bravo-machine.sh us-east-1`
-1. `./create-charlie-machine.sh us-east-1`
-1. `./create-delta-machine.sh us-east-1`
-1. `./create-echo-machine.sh us-east-1`
+1. `./create-alpha-machine.sh us-east-1 a`
+1. `./create-bravo-machine.sh us-east-1 a`
+1. `./create-charlie-machine.sh us-east-1 a`
+1. `./create-delta-machine.sh us-east-1 a`
+1. `./create-echo-machine.sh us-east-1 a`
 1. `cat fix-docker-permissions.sh`
 1. `./fix-docker-permissions.sh <alpha ip>`
 1. `./fix-docker-permissions.sh <bravo ip>`
