@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker-machine ssh charlie docker swarm leave
+docker-machine ssh delta docker swarm leave
+docker-machine ssh echo docker swarm leave
+bash create-swarm.sh
+docker-machine ssh bravo docker node rm $(docker-machine ssh bravo docker node ls | grep Down)
