@@ -485,7 +485,7 @@ In this example, we are asking to have our 3 alpine containers to only run on wo
 Last time, we looked at constrained deployments.  Today we'll see how to scale our services down.  In truth, there really isn't much to do because Docker takes care of everything for us.  All we need to do is to tell the swarm how many instances we need currently.
 
 1. `git reset --hard`
-1. `cd solutions/lab-26`
+1. `cd solutions/lab-27`
 1. `./clean-slate-protocol.sh`
 1. `cat scale-down-service.sh`
 1. `./scale-down-service.sh`
