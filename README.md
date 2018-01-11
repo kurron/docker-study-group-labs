@@ -542,6 +542,7 @@ Things to note in the above session. First, the work shifts from delta to echo. 
 1. `docker-machine ssh bravo docker service scale nginx=2`
 1. `docker-machine ssh bravo docker service ps nginx`
 
+# Lab N: [Docker Store](https://store.docker.com/)
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
