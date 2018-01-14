@@ -542,6 +542,30 @@ Things to note in the above session. First, the work shifts from delta to echo. 
 1. `docker-machine ssh bravo docker service scale nginx=2`
 1. `docker-machine ssh bravo docker service ps nginx`
 
+# Lab 32: Function as a Service (FaaS)
+>The business has decided that in order to stay competitive, our product needs to support developer extension points.  They want an experience similar to AWS Lambda where code written in a variety of programming languages can interact with our system in a safe and predictable manner.  Luckily, we've already covered everything we'll need to produce a Docker-based proof of concept.  In this lab, we'll create a FaaS implementation as a series of short shell scripts that interact with Docker that simulates the developer experience.  The implementation must support the following:
+* JVM and Python based functions
+* functions that accept a string and that return a string
+* developer can specify the following runtime constraints
+  * RAM
+  * CPU
+  * whether networking is needed or not
+  * the name of the script to run
+  * a file containing environment variables that the script can use for configuration
+
+Create a script that launches a container using the appropriate image and runtime switches.  You will have two scripts, one for each runtime.  Your task is complete if the string passed to the script is printed in uppercase.  There is a solution in `solutions/lab-32` if you get stuck.
+
+1. `git reset --hard`
+1. `cd labs/lab-32`
+1. `./clean-slate-protocol.sh`
+1. `cat faas.env`
+1. `cat faas.groovy`
+1. `cat faas.py`
+1. `cat run-groovy-function.sh`
+1. `cat run-python-function.sh`
+1. poke around [Docker Hub](https://hub.docker.com/explore/) to find the appropriate images
+
+
 # Lab N: [Docker Store](https://store.docker.com/)
 # Lab N: Consul, Service Discovery and Docker
 # Lab N: Amazon EC2 Container Registry
