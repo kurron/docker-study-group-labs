@@ -572,13 +572,14 @@ Create a script that launches a container using the appropriate image and runtim
 1. `git pull`
 1. `cd labs/lab-33`
 1. `./clean-slate-protocol.sh`
+1. edit `Dockerfile` so that it creates an image that runs the Linux `date` command
 1. edit `create-docker-image.sh` as needed to create the proper image
 1. `./create-docker-image.sh` to create the image
 1. run the proper Docker command to verify the image built correctly
 1. edit `test-image.sh` so that it tests your image
 1. `./test-image.sh` to verify your image works correctly
-1. log into your AWS account navigate to *Compute->Elastic Container Service*
-1. create your repository.  You can call it anything you want but `aws-study-group` will be used in the instructions
+1. log into your AWS account, navigating to *Compute->Elastic Container Service*
+1. create your repository.  You can call it anything you want but `aws-study-group` will be used in the solution
 1. follow the instructions from Amazon on how to authenticate to your registry
 1. edit `tag-image.sh` so that it tags the existing image with a tag suitable for your new repository
 1. `./tag-image.sh` to tag the image
@@ -589,13 +590,13 @@ Create a script that launches a container using the appropriate image and runtim
 1. select a classmate
 1. using the AWS console, give their account the ability to pull down your image
 1. have them pull down your image and run it
+1. Using the AWS console, figure out how to auto-delete images that are older than 30 days
 
 
 
 
 # Lab N: [Docker Store](https://store.docker.com/)
 # Lab N: Consul, Service Discovery and Docker
-# Lab N: Amazon EC2 Container Registry
 # Lab N: Personal Image Registry (4.8)
 # Lab N: Dockerfile Madness (advanced) (4.5.10.10)
 # Lab N: Docker Log Drivers (3.9)
