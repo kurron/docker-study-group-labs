@@ -565,6 +565,33 @@ Create a script that launches a container using the appropriate image and runtim
 1. `cat run-python-function.sh`
 1. poke around [Docker Hub](https://hub.docker.com/explore/) to find the appropriate images
 
+# Lab 33: AWS Docker Registry
+>In this lab, we will host our images on Amazon instead of using public repositories.  Normally, this is done for security and operational reasons.  We will create the registry in our AWS account, push an image to it and have one of our classmates pull from it.  The container simply prints the current date and time.
+
+1. `git reset --hard`
+1. `git pull`
+1. `cd labs/lab-33`
+1. `./clean-slate-protocol.sh`
+1. edit `create-docker-image.sh` as needed to create the proper image
+1. `./create-docker-image.sh` to create the image
+1. run the proper Docker command to verify the image built correctly
+1. edit `test-image.sh` so that it tests your image
+1. `./test-image.sh` to verify your image works correctly
+1. log into your AWS account navigate to *Compute->Elastic Container Service*
+1. create your repository.  You can call it anything you want but `aws-study-group` will be used in the instructions
+1. follow the instructions from Amazon on how to authenticate to your registry
+1. edit `tag-image.sh` so that it tags the existing image with a tag suitable for your new repository
+1. `./tag-image.sh` to tag the image
+1. run the proper Docker command to verify the image got tagged correctly
+1. edit `push.image.sh`
+1. `./push-image.sh` to push it to the registry
+1. use the console to verify the image made it
+1. select a classmate
+1. using the AWS console, give their account the ability to pull down your image
+1. have them pull down your image and run it
+
+
+
 
 # Lab N: [Docker Store](https://store.docker.com/)
 # Lab N: Consul, Service Discovery and Docker
