@@ -5,5 +5,5 @@ FROM
 MAINTAINER 
 
 # Tell Docker how to run the date command when it starts 
-ENTRYPOINT 
+ 
 
